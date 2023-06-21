@@ -1,17 +1,18 @@
 const parseUserName = () => {
   let parsedArgs = process.argv.slice(2);
 
-  if (parsedArgs.length === 0) {
-    return 'Anonymous';
-  } else {
-    parsedArgs = parsedArgs.map((item) => {
-      if (item.startsWith('--username')) {
-        return item.slice(11).split('_').join(' ').trim();
-      } else {
-        return 'Anonymous';
-      }
-    })
+  if (parsedArgs.length === 1) {
+    parsedArgs = parsedArgs
+      .map((item) => {
+        if (item.startsWith('--username')) {
+          return item.slice(11).split('_').join(' ').trim();
+        } else {
+          return 'Anonymous';
+        }
+      })
       .toString();
+  } else {
+    parsedArgs = 'Anonymous'
   }
 
   return parsedArgs;
