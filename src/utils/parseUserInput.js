@@ -5,6 +5,8 @@ let destinationPath;
 let fileName;
 let osParameter;
 
+//TODO:At the start of the program and after each end of input/operation current working directory should be printed in following way: You are currently in path_to_working_directory
+
 export const parseUserInput = (value) => {
   if (value.includes(' ')) {
     const parsingList = value.split(' ');
@@ -46,6 +48,20 @@ export const parseUserInput = (value) => {
       case 'os':
         osParameter = parsingList[1];
         console.log(`Operating system info ${osParameter}`);
+        break;
+      case 'hash':
+        filePath = parsingList[1];
+        console.log(`Calculate hash for ${filePath} and print it into console`);
+        break;
+      case 'compress':
+        filePath = parsingList[1];
+        destinationPath = parsingList[2];
+        console.log(`Compress file from ${filePath} to ${destinationPath} (using Brotli algorithm and Streams)`);
+        break;
+      case 'decompress':
+        filePath = parsingList[1];
+        destinationPath = parsingList[2];
+        console.log(`Compress file from ${filePath} to ${destinationPath} (using Brotli algorithm and Streams)`);
         break;
       default:
         console.log('Invalid input');
