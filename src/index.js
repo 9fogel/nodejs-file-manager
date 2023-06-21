@@ -1,5 +1,16 @@
-import { showGreeting } from "./cli/parseUsername.js";
+import * as readline from 'readline/promises';
+import { stdin as input, stdout as output } from 'process';
+import { sayHi, sayBye } from "./cli/parseUsername.js";
 
-// console.log('Hello');
+sayHi();
 
-showGreeting();
+const rl = readline.createInterface({ input, output });
+
+rl.on('line', (input) => {
+  console.log(`Received: ${input}`);
+});
+
+rl.on('SIGINT', () => {
+  sayBye();
+  rl.close();
+});
