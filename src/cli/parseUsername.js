@@ -1,3 +1,5 @@
+import { showHomeDir } from "../os/showHomeDir.js";
+
 const parseUserName = () => {
   let parsedArgs = process.argv.slice(2);
 
@@ -19,9 +21,10 @@ const parseUserName = () => {
 };
 
 const userName = parseUserName();
+const homeDirMessage = showHomeDir();
 
 export const sayHi = () => {
-  console.log(`Welcome to the File Manager, ${userName}!`)
+  console.log(`Welcome to the File Manager, ${userName}!\n${homeDirMessage}`)
 }
 
 export const sayBye = () => {

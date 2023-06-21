@@ -14,3 +14,5 @@ rl.on('SIGINT', () => {
   sayBye();
   rl.close();
 });
+
+//TODO: add exit when .exit command is printed to console
