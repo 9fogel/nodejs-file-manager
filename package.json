@@ -1,0 +1,22 @@
+{
+  "name": "nodejs-file-manager",
+  "version": "1.0.0",
+  "description": "File Manager Assignment RSS School",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/9fogel/nodejs-file-manager.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Vera Kirayonak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/9fogel/nodejs-file-manager/issues"
+  },
+  "homepage": "https://github.com/9fogel/nodejs-file-manager#readme"
+}
