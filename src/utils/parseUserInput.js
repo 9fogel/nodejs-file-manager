@@ -1,4 +1,5 @@
 import { showOSInfo } from "../os/osInfo.js";
+import { goUp } from "../nav/navigation.js";
 
 let operation;
 let filePath;
@@ -9,7 +10,7 @@ let parameters;
 
 //TODO:At the start of the program and after each end of input/operation current working directory should be printed in following way: You are currently in path_to_working_directory
 
-export const parseUserInput = (value) => {
+export const parseUserInput = async (value) => {
   value = value.trim();
   if (value.includes(' ')) {
     const parsingList = value.split(' ');
@@ -51,7 +52,7 @@ export const parseUserInput = (value) => {
         console.log(`Delete file ${fileName}`);
         break;
       case 'os':
-        showOSInfo(parameters);
+        await showOSInfo(parameters);
         break;
       case 'hash':
         filePath = parsingList[1];
@@ -74,7 +75,7 @@ export const parseUserInput = (value) => {
     operation = value;
     switch (operation) {
       case 'up':
-        console.log( 'Go upper from current directory');
+        await goUp();
         break;
       case 'ls':
         console.log( 'Print in console list of all files and folders in current directory');

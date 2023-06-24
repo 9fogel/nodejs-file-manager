@@ -1,6 +1,6 @@
 import os from 'os';
 
-const userHomeDir = os.homedir();
+export const userHomeDir = os.homedir();
 
 export const showHomeDir = () => {
   return `You are currently in ${userHomeDir}\n`
