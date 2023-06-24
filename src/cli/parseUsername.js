@@ -1,4 +1,4 @@
-import { showHomeDir } from "../os/showHomeDir.js";
+import { showHomeDir } from "../os/osInfo.js";
 
 const parseUserName = () => {
   let parsedArgs = process.argv.slice(2);

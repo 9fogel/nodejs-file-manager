@@ -1,17 +1,22 @@
+import { showOSInfo } from "../os/osInfo.js";
+
 let operation;
 let filePath;
 let dirPath;
 let destinationPath;
 let fileName;
-let osParameter;
+let parameters;
 
 //TODO:At the start of the program and after each end of input/operation current working directory should be printed in following way: You are currently in path_to_working_directory
 
 export const parseUserInput = (value) => {
+  value = value.trim();
   if (value.includes(' ')) {
     const parsingList = value.split(' ');
 
     operation = parsingList[0];
+    parameters = parsingList.slice(1).join(' ');
+    // console.log(parameters);
 
     switch (operation) {
       case 'cd':
@@ -46,8 +51,7 @@ export const parseUserInput = (value) => {
         console.log(`Delete file ${fileName}`);
         break;
       case 'os':
-        osParameter = parsingList[1];
-        console.log(`Operating system info ${osParameter}`);
+        showOSInfo(parameters);
         break;
       case 'hash':
         filePath = parsingList[1];
