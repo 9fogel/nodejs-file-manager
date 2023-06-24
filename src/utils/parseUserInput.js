@@ -1,5 +1,5 @@
 import { showOSInfo } from "../os/osInfo.js";
-import { goUp } from "../nav/navigation.js";
+import { goUp, goToFolder } from "../nav/navigation.js";
 import { showList } from "../nav/list.js";
 
 let operation;
@@ -21,8 +21,7 @@ export const parseUserInput = async (value) => {
 
     switch (operation) {
       case 'cd':
-        dirPath = parsingList[1];
-        console.log(`Go to ${dirPath}`);
+        await goToFolder(parameters);
         break;
       case 'cat':
         filePath = parsingList[1];

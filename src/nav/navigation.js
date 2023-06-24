@@ -1,4 +1,5 @@
 import path from 'path';
+import { getDirPath } from './pathHandler.js';
 
 export const workingDir = {
   current: process.cwd(),
@@ -19,4 +20,10 @@ export const goUp = async () => {
   const dirAbovePath = path.join(currentWorkingDir, '..');
 
   await setCWD(dirAbovePath);
+}
+
+export const goToFolder = async (dir) => {
+  const dirPath = getDirPath(dir);
+
+  await setCWD(dirPath);
 }
