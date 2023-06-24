@@ -11,13 +11,13 @@ setCWD(userHomeDir);
 
 const rl = readline.createInterface({ input, output });
 
-rl.on('line', (input) => {
+rl.on('line', async (input) => {
   if (input.trim() === '.exit') {
     sayBye();
     rl.close();
     process.exit();
   } else {
-    parseUserInput(input);
+    await parseUserInput(input);
     rl.setPrompt(`You are currently in ${workingDir.current}\n`)
     rl.prompt();
   }

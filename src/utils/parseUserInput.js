@@ -1,5 +1,6 @@
 import { showOSInfo } from "../os/osInfo.js";
 import { goUp } from "../nav/navigation.js";
+import { showList } from "../nav/list.js";
 
 let operation;
 let filePath;
@@ -78,7 +79,8 @@ export const parseUserInput = async (value) => {
         await goUp();
         break;
       case 'ls':
-        console.log( 'Print in console list of all files and folders in current directory');
+        await showList();
+        // console.log( 'Print in console list of all files and folders in current directory');
         break;
       default:
         console.log('Invalid input');

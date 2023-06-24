@@ -18,5 +18,5 @@ export const goUp = async () => {
   const currentWorkingDir = workingDir.current;
   const dirAbovePath = path.join(currentWorkingDir, '..');
 
-  setCWD(dirAbovePath);
+  await setCWD(dirAbovePath);
 }
