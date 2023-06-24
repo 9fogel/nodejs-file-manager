@@ -9,10 +9,9 @@ let destinationPath;
 let fileName;
 let parameters;
 
-//TODO:At the start of the program and after each end of input/operation current working directory should be printed in following way: You are currently in path_to_working_directory
-
 export const parseUserInput = async (value) => {
   value = value.trim();
+
   if (value.includes(' ')) {
     const parsingList = value.split(' ');
 
@@ -80,7 +79,6 @@ export const parseUserInput = async (value) => {
         break;
       case 'ls':
         await showList();
-        // console.log( 'Print in console list of all files and folders in current directory');
         break;
       default:
         console.log('Invalid input');

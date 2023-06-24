@@ -11,20 +11,22 @@ setCWD(userHomeDir);
 
 const rl = readline.createInterface({ input, output });
 
+const closeReadline = () => {
+  sayBye();
+  rl.close();
+  process.exit();
+}
+
 rl.on('line', async (input) => {
   if (input.trim() === '.exit') {
-    sayBye();
-    rl.close();
-    process.exit();
+    closeReadline();
   } else {
     await parseUserInput(input);
-    rl.setPrompt(`You are currently in ${workingDir.current}\n`)
+    rl.setPrompt(`\nYou are currently in ${workingDir.current}\n`)
     rl.prompt();
   }
 });
 
 rl.on('SIGINT', () => {
-  sayBye();
-  rl.close();
-  process.exit();
+  closeReadline();
 });

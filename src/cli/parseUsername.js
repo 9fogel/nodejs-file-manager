@@ -24,7 +24,7 @@ const userName = parseUserName();
 const homeDirMessage = showHomeDir();
 
 export const sayHi = () => {
-  console.log(`Welcome to the File Manager, ${userName}!\n${homeDirMessage}`)
+  console.log(`Welcome to the File Manager, ${userName}!\n\n${homeDirMessage}`)
 }
 
 export const sayBye = () => {

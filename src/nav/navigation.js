@@ -2,7 +2,7 @@ import path from 'path';
 
 export const workingDir = {
   current: process.cwd(),
-}
+};
 
 export const setCWD = async (dir) => {
   process.chdir(dir);

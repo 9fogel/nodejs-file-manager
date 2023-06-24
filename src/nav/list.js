@@ -4,6 +4,7 @@ import { workingDir } from "./navigation.js";
 
 export const showList = async () => {
   let fileList = await readdir(workingDir.current, { withFileTypes: true });
+
   fileList = fileList
   .filter((item) => !item.isSymbolicLink())
   .map((item) => {
@@ -16,9 +17,9 @@ export const showList = async () => {
 
   const sortedFileList = fileList.sort((a, b) => {
     if (a.type === b.type) {
-      return a.name < b.name ? -1 : 1
+      return a.name < b.name ? -1 : 1;
     } else {
-      return a.type < b.type ? -1 : 1
+      return a.type < b.type ? -1 : 1;
     }
   });
 

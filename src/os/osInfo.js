@@ -3,7 +3,7 @@ import os from 'os';
 export const userHomeDir = os.homedir();
 
 export const showHomeDir = () => {
-  return `You are currently in ${userHomeDir}\n`
+  return `You are currently in ${userHomeDir}\n`;
 }
 
 export const showOSInfo = async (args) => {
@@ -35,10 +35,10 @@ const printEOL = async () => {
 const printCPUs = async () => {
   const CPUInfo = os.cpus().map((item) => {
     return {
-      'model': item.model.split(' @ ')[0],
-      'clockRate': item.model.split(' @ ')[1],
+      'model': item.model,
+      'clockRate': `${item.speed * 0.001} GHz`,
     }
-  })
+  });
   console.log(`total CPUs: ${os.cpus().length}`);
   console.log(CPUInfo);
 }
