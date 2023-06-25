@@ -3,10 +3,9 @@ import { goUp, goToFolder } from "../nav/navigation.js";
 import { showList } from "../nav/list.js";
 import { read, addFile, rename, copyFile , deleteFile, moveFile } from "../fs/files.js";
 import { calculateHash } from "../hash/hash.js";
+import { compressBrotli } from "../zip/brotli.js";
 
 let operation;
-let filePath;
-let destinationPath;
 let parameters;
 
 export const parseUserInput = async (value) => {
@@ -48,14 +47,10 @@ export const parseUserInput = async (value) => {
         await calculateHash(parameters);
         break;
       case 'compress':
-        filePath = parsingList[1];
-        destinationPath = parsingList[2];
-        console.log(`Compress file from ${filePath} to ${destinationPath} (using Brotli algorithm and Streams)`);
+        await compressBrotli('compress', parameters);
         break;
       case 'decompress':
-        filePath = parsingList[1];
-        destinationPath = parsingList[2];
-        console.log(`Compress file from ${filePath} to ${destinationPath} (using Brotli algorithm and Streams)`);
+        await compressBrotli('decompress', parameters);
         break;
       default:
         console.log('Invalid input');
