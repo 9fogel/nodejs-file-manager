@@ -18,12 +18,16 @@ const closeReadline = () => {
 }
 
 rl.on('line', async (input) => {
-  if (input.trim() === '.exit') {
-    closeReadline();
-  } else {
-    await parseUserInput(input);
-    rl.setPrompt(`\nYou are currently in ${workingDir.current}\n`)
-    rl.prompt();
+  try {
+    if (input.trim() === '.exit') {
+      closeReadline();
+    } else {
+      await parseUserInput(input);
+      rl.setPrompt(`\nYou are currently in ${workingDir.current}\n`)
+      rl.prompt();
+    }
+  } catch {
+    console.error('Operation failed');
   }
 });
 
