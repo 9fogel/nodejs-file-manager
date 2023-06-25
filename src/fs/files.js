@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { writeFile, rename as renameFile } from 'fs/promises';
+import { writeFile, rename as renameFile, rm } from 'fs/promises';
 import { getAbsolutePath } from "../nav/pathHandler.js";
 import { isFile } from "../utils/helpers.js";
 
@@ -54,4 +54,10 @@ export const copyFile = async (args) => {
   const writableStream = fs.createWriteStream(newPath);
 
   readableStream.pipe(writableStream);
+}
+
+export const deleteFile = async (args) => {
+  const filePath = getAbsolutePath(args);
+  console.log(filePath);
+  await rm(filePath);
 }
