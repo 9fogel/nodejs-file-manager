@@ -1,17 +1,25 @@
-import { stat } from 'fs/promises';
+import { access, stat } from 'fs/promises';
 
-export const isFile = async(absolutePath) => {
+
+const doesExist = async (path) => {
   try {
-    const stats = await stat(absolutePath);
-
-    return stats.isFile();
+    await access(path);
+    return true;
   } catch {
-    console.error('Operation failed');
-  //   throw new Error(err.message);
+    return false;
   }
 }
 
-const isDirectory = async(enteredPath) => {
+export const isFile = async (absolutePath) => {
+  if (doesExist(absolutePath)) {
+    const stats = await stat(absolutePath);
+    return stats.isFile();
+  } else {
+    throw new Error(`File doesn't exist`);
+  }
+}
+
+const isDirectory = async (enteredPath) => {
   const stats = await stat(absolutePath);
 
   return stats.isDirectory();

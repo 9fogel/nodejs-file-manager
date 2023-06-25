@@ -17,17 +17,22 @@ const closeReadline = () => {
   process.exit();
 }
 
+const promptReadline = () => {
+  rl.setPrompt(`\nYou are currently in ${workingDir.current}\n`)
+  rl.prompt();
+}
+
 rl.on('line', async (input) => {
   try {
     if (input.trim() === '.exit') {
       closeReadline();
     } else {
       await parseUserInput(input);
-      rl.setPrompt(`\nYou are currently in ${workingDir.current}\n`)
-      rl.prompt();
+      promptReadline();
     }
-  } catch {
+  } catch (error) {
     console.error('Operation failed');
+    promptReadline();
   }
 });
 
