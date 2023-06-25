@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { writeFile } from 'fs/promises';
 import { getAbsolutePath } from "../nav/pathHandler.js";
 import { isFile } from "../utils/helpers.js";
 
@@ -22,3 +23,8 @@ export const read = async (args) => {
     // throw new Error;
   }
 };
+
+export const addFile = async (args) => {
+  const filePath = getAbsolutePath(args);
+  await writeFile(filePath, '', { flag: 'wx' });
+}

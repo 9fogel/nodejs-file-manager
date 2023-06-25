@@ -1,7 +1,7 @@
 import { showOSInfo } from "../os/osInfo.js";
 import { goUp, goToFolder } from "../nav/navigation.js";
 import { showList } from "../nav/list.js";
-import { read } from "../fs/files.js";
+import { read, addFile } from "../fs/files.js";
 
 let operation;
 let filePath;
@@ -28,8 +28,9 @@ export const parseUserInput = async (value) => {
         await read(parameters);
         break;
       case 'add':
-        fileName = parsingList[1];
-        console.log(`Create empty ${fileName} in current working directory`);
+        await addFile(parameters);
+        // fileName = parsingList[1];
+        // console.log(`Create empty ${fileName} in current working directory`);
         break;
       case 'rn':
         filePath = parsingList[1];
