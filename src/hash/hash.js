@@ -7,7 +7,11 @@ export const calculateHash = async (args) => {
   const filePath = getAbsolutePath(args);
 
   const hash = createHash('sha256');
-  const readStream = fs.createReadStream(filePath);
+  const readableStream = fs.createReadStream(filePath);
 
-  readStream.pipe(hash).setEncoding('hex').pipe(process.stdout);
+  readableStream.on('error', () => {
+    console.error('Operation failed');
+  });
+
+  readableStream.pipe(hash).setEncoding('hex').pipe(process.stdout);
 };

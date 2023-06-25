@@ -10,6 +10,10 @@ export const read = async (args) => {
   if (await isFile(filePath)) {
     const readableStream = fs.createReadStream(filePath, { encoding: 'utf-8'});
 
+    readableStream.on('error', () => {
+      console.error('Operation failed');
+    });
+
     readableStream.pipe(process.stdout);
 
     // let data = '';
@@ -52,6 +56,14 @@ export const copyFile = async (args) => {
 
   const readableStream = fs.createReadStream(oldPath);
   const writableStream = fs.createWriteStream(newPath);
+
+  readableStream.on('error', () => {
+    console.error('Operation failed');
+  });
+
+  writableStream.on('error', () => {
+    console.error('Operation failed');
+  });
 
   readableStream.pipe(writableStream);
 }
