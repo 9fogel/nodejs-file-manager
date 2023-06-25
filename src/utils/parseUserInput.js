@@ -2,11 +2,11 @@ import { showOSInfo } from "../os/osInfo.js";
 import { goUp, goToFolder } from "../nav/navigation.js";
 import { showList } from "../nav/list.js";
 import { read, addFile, rename, copyFile , deleteFile, moveFile } from "../fs/files.js";
+import { calculateHash } from "../hash/hash.js";
 
 let operation;
 let filePath;
 let destinationPath;
-let fileName;
 let parameters;
 
 export const parseUserInput = async (value) => {
@@ -45,8 +45,7 @@ export const parseUserInput = async (value) => {
         await showOSInfo(parameters);
         break;
       case 'hash':
-        filePath = parsingList[1];
-        console.log(`Calculate hash for ${filePath} and print it into console`);
+        await calculateHash(parameters);
         break;
       case 'compress':
         filePath = parsingList[1];
