@@ -42,3 +42,16 @@ export const rename = async (args) => {
       await renameFile(oldPath, newPath);
     }
 };
+
+export const copyFile = async (args) => {
+  const [ filePath, newDirPath ] = args.split(' ');
+
+  const oldPath = getAbsolutePath(filePath);
+  const fileName = path.basename(filePath);
+  const newPath = getAbsolutePath(path.join(newDirPath, fileName));
+
+  const readableStream = fs.createReadStream(oldPath);
+  const writableStream = fs.createWriteStream(newPath);
+
+  readableStream.pipe(writableStream);
+}
