@@ -8,9 +8,8 @@ export const showList = async () => {
   fileList = fileList
   .filter((item) => !item.isSymbolicLink())
   .map((item) => {
-    const extension = path.extname(path.join(workingDir.current, item.name));
     return {
-      name: item.isDirectory() ? item.name : item.name + extension,
+      name: item.name,
       type: item.isDirectory() ? 'directory' : 'file',
     }
   });
