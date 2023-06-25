@@ -1,6 +1,7 @@
 import { showOSInfo } from "../os/osInfo.js";
 import { goUp, goToFolder } from "../nav/navigation.js";
 import { showList } from "../nav/list.js";
+import { read } from "../fs/files.js";
 
 let operation;
 let filePath;
@@ -24,8 +25,7 @@ export const parseUserInput = async (value) => {
         await goToFolder(parameters);
         break;
       case 'cat':
-        filePath = parsingList[1];
-        console.log(`Read ${filePath} and print it's content in console`);
+        await read(parameters);
         break;
       case 'add':
         fileName = parsingList[1];
