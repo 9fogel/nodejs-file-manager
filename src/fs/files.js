@@ -58,6 +58,12 @@ export const copyFile = async (args) => {
 
 export const deleteFile = async (args) => {
   const filePath = getAbsolutePath(args);
-  console.log(filePath);
   await rm(filePath);
+}
+
+export const moveFile = async (args) => {
+  const filePath = args.split(' ')[0];
+
+  await copyFile(args);
+  await deleteFile(getAbsolutePath(filePath));
 }

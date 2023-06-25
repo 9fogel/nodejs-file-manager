@@ -1,7 +1,7 @@
 import { showOSInfo } from "../os/osInfo.js";
 import { goUp, goToFolder } from "../nav/navigation.js";
 import { showList } from "../nav/list.js";
-import { read, addFile, rename, copyFile , deleteFile } from "../fs/files.js";
+import { read, addFile, rename, copyFile , deleteFile, moveFile } from "../fs/files.js";
 
 let operation;
 let filePath;
@@ -36,9 +36,7 @@ export const parseUserInput = async (value) => {
         await copyFile(parameters);
         break;
       case 'mv':
-        filePath = parsingList[1];
-        destinationPath = parsingList[2];
-        console.log(`Move file ${filePath} to ${destinationPath}`);
+        await moveFile(parameters);
         break;
       case 'rm':
         await deleteFile(parameters);
