@@ -39,8 +39,8 @@ const printCPUs = async () => {
       'clockRate': `${item.speed * 0.001} GHz`,
     }
   });
-  console.log(`total CPUs: ${os.cpus().length}`);
   console.log(CPUInfo);
+  console.log(`total CPUs: ${os.cpus().length}`);
 }
 
 const printHomedir = async () => {
