@@ -43,7 +43,7 @@ export const parseUserInput = async (value) => {
           console.log('Invalid input');
       }
     } else if (parsedArgs.length === 2) {
-      //switch for commands with 2 argumens
+      //switch for commands with 2 arguments
       switch (operation) {
         case 'rn':
         await rename(parsedArgs);
