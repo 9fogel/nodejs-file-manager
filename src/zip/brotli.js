@@ -1,5 +1,6 @@
 import path from 'path';
 import fs from 'fs';
+import { pipeline } from 'stream/promises';
 import { createBrotliCompress, createBrotliDecompress} from 'zlib';
 import { getAbsolutePath } from '../nav/pathHandler.js';
 
@@ -21,9 +22,5 @@ export const compressBrotli = async (action, args) => {
     brotli = createBrotliDecompress();
   }
 
-  const stream = source.pipe(brotli).pipe(destination);
-
-  stream.on('error', () => {
-    console.error('Operation failed');
-  });
+  await pipeline(source, brotli, destination);
 };
