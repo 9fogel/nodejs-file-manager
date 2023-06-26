@@ -17,7 +17,7 @@ export const compressBrotli = async (action, args) => {
 
   if (action === 'compress') {
     brotli = createBrotliCompress();
-  } else {
+  } else if (action === 'decompress') {
     brotli = createBrotliDecompress();
   }
 
