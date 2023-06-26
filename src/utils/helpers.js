@@ -20,12 +20,6 @@ export const isFile = async (absolutePath) => {
   }
 }
 
-// const isDirectory = async (enteredPath) => {
-//   const stats = await stat(absolutePath);
-
-//   return stats.isDirectory();
-// }
-
 export const showOutput = async () => {
   return new Writable({
     write(chunk, encoding, callback) {

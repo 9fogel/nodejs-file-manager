@@ -17,7 +17,6 @@ export const parseUserInput = async (value) => {
     const parameters = parsingList.slice(1).join(' ');
 
     const parsedArgs = await parseArguments(parameters);
-    console.log(parsedArgs);
 
     if (parsedArgs.length === 1) {
       //switch for commands with 1 argument
@@ -33,6 +32,9 @@ export const parseUserInput = async (value) => {
           break;
         case 'rm':
           await deleteFile(parsedArgs);
+          break;
+        case 'os':
+          await showOSInfo(parameters);
           break;
         case 'hash':
           await calculateHash(parsedArgs);
@@ -77,63 +79,4 @@ export const parseUserInput = async (value) => {
         console.log('Invalid input');
     }
   }
-
-  // if (value.trim().includes(' ')) {
-  //   //TODO: parsing and validation needed
-  //   const parsingList = value.split(' ');
-
-  //   operation = parsingList[0];
-  //   parameters = parsingList.slice(1).join(' ');
-  //   // console.log(parameters);
-
-  //   switch (operation) {
-  //     case 'cd':
-  //       await goToFolder(parameters);
-  //       break;
-  //     case 'cat':
-  //       await read(parameters);
-  //       break;
-  //     case 'add':
-  //       await addFile(parameters);
-  //       break;
-  //     case 'rn':
-  //       await rename(parameters);
-  //       break;
-  //     case 'cp':
-  //       await copyFile(parameters);
-  //       break;
-  //     case 'mv':
-  //       await moveFile(parameters);
-  //       break;
-  //     case 'rm':
-  //       await deleteFile(parameters);
-  //       break;
-  //     case 'os':
-  //       await showOSInfo(parameters);
-  //       break;
-  //     case 'hash':
-  //       await calculateHash(parameters);
-  //       break;
-  //     case 'compress':
-  //       await compressBrotli('compress', parameters);
-  //       break;
-  //     case 'decompress':
-  //       await compressBrotli('decompress', parameters);
-  //       break;
-  //     default:
-  //       console.log('Invalid input');
-  //   }
-  // } else {
-  //   operation = value;
-  //   switch (operation) {
-  //     case 'up':
-  //       await goUp();
-  //       break;
-  //     case 'ls':
-  //       await showList();
-  //       break;
-  //     default:
-  //       console.log('Invalid input');
-  //   }
-  // }
 }
