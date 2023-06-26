@@ -10,7 +10,6 @@ export const parseArgs = async (value) => {
     symbolsList.forEach((char) => {
       if (char === '"') {
         if (!stack.includes('"') && !nameStr) {
-          console.log(nameStr);
           stack.push(char);
         } else {
           stack.pop();
