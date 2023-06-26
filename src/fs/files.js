@@ -10,11 +10,6 @@ export const read = async (args) => {
 
   if (await isFile(filePath)) {
     const readableStream = fs.createReadStream(filePath, { encoding: 'utf-8'});
-
-    readableStream.on('error', () => {
-      console.error('Operation failed');
-    });
-
     await pipeline(readableStream, await output());
   }
 };
@@ -45,18 +40,13 @@ export const copyFile = async (args) => {
   const fileName = path.basename(filePath);
   const newPath = getAbsolutePath(path.join(newDirPath, fileName));
 
-  const readableStream = fs.createReadStream(oldPath);
-  const writableStream = fs.createWriteStream(newPath);
-
-  readableStream.on('error', () => {
-    console.error('Operation failed');
-  });
-
-  writableStream.on('error', () => {
-    console.error('Operation failed');
-  });
-
-  readableStream.pipe(writableStream);
+  if (await doesFileExist(oldPath)) {
+    const readableStream = fs.createReadStream(oldPath);
+    const writableStream = fs.createWriteStream(newPath);
+    await pipeline(readableStream, writableStream);
+  } else {
+    throw new Error('No source file');
+  }
 }
 
 export const deleteFile = async (args) => {
