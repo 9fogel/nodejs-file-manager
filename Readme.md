@@ -1,5 +1,27 @@
 # Assignment: File Manager
 
+## PLEASE NOTE:
+To run the app enter `npm run start -- --username=your_username` - **if username was provided in incorrect format or empty username or no username was provided, default name `Anonymous` will be used**
+
+:grey_exclamation: **If your files/folders have spaces in their name, please wrap the argument in double quotes. Examples:**
+```
+cd "C:\Users\Vera\Docs with spaces"
+cat "file with spaces.txt"
+add "file with spaces.txt"
+
+cp "file with spaces.txt" C:\Users\Vera
+```
+
+
+- `add new_file_name` - **if the file with such name already exists, operation will fail**
+- `rn path_to_file new_filename` - **if the file with such name already exists, operation will fail**
+
+- `cp path_to_file path_to_new_directory` - **if the file with the same name already exists in destination directory, operation will fail**
+- `mv path_to_file path_to_new_directory` - **if the file with the same name already exists in destination directory, operation will fail**
+- `decompress path_to_file path_to_destination`  - **if the file with the same name already exists in destination directory, operation will fail**
+
+- `compress path_to_file path_to_destination` - **`path_to_destination` is a DIRECTORY (same for decompress)**
+
 ## Description
 
 Your task is to implement File Manager using Node.js APIs.
@@ -113,4 +135,3 @@ List of operations and their syntax:
     decompress path_to_file path_to_destination
     ```
     NB! After decompressing of previously compressed file result should not differ with originally compressed file
-    
