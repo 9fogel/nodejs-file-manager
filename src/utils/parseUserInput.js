@@ -53,10 +53,10 @@ export const parseUserInput = async (value) => {
         await moveFile(parsedArgs);
         break;
       case 'compress':
-        await compressBrotli('compress', parameters);
+        await compressBrotli('compress', parsedArgs);
         break;
       case 'decompress':
-        await compressBrotli('decompress', parameters);
+        await compressBrotli('decompress', parsedArgs);
         break;
       default:
         console.log('Invalid input');

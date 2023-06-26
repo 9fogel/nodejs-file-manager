@@ -4,7 +4,7 @@ import { createBrotliCompress, createBrotliDecompress} from 'zlib';
 import { getAbsolutePath } from '../nav/pathHandler.js';
 
 export const compressBrotli = async (action, args) => {
-  const [filePath, newDirPath] = args.split(' ');
+  const [filePath, newDirPath] = args;
 
   const sourcePath = getAbsolutePath(filePath);
   const fileName = action === 'compress' ? path.basename(filePath) + '.br' : path.basename(filePath, '.br');
