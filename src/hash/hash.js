@@ -1,5 +1,7 @@
 import fs from 'fs';
+import { pipeline } from 'stream/promises';
 import { getAbsolutePath } from '../nav/pathHandler.js';
+import { showOutput as output } from '../utils/helpers.js';
 
 const { createHash } = await import('crypto');
 
@@ -13,5 +15,5 @@ export const calculateHash = async (args) => {
     console.error('Operation failed');
   });
 
-  readableStream.pipe(hash).setEncoding('hex').pipe(process.stdout);
+  await pipeline(readableStream, hash.setEncoding('hex'), await output());
 };

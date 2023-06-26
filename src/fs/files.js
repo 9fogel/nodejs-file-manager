@@ -1,8 +1,9 @@
 import fs from 'fs';
 import path from 'path';
+import { pipeline } from 'stream/promises';
 import { writeFile, rename as renameFile, rm } from 'fs/promises';
 import { getAbsolutePath } from "../nav/pathHandler.js";
-import { isFile } from "../utils/helpers.js";
+import { isFile, showOutput as output } from "../utils/helpers.js";
 
 export const read = async (args) => {
   const filePath = getAbsolutePath(args);
@@ -14,17 +15,7 @@ export const read = async (args) => {
       console.error('Operation failed');
     });
 
-    readableStream.pipe(process.stdout);
-
-    // let data = '';
-
-    // readableStream.on('data', (chunk) => {
-    //   data += chunk;
-    // });
-
-    // readableStream.on('end', () => {
-    //   console.log(data);
-    // });
+    await pipeline(readableStream, await output());
   }
 };
 
