@@ -15,7 +15,6 @@ export const setCWD = async (dir) => {
 }
 
 export const goUp = async () => {
-  // const currentWorkingDir = process.cwd();
   const currentWorkingDir = workingDir.current;
   const dirAbovePath = path.join(currentWorkingDir, '..');
 
@@ -28,9 +27,3 @@ export const goToFolder = async (args) => {
 
   await setCWD(dirPath);
 }
-
-// export const goToFolder = async (dir) => {
-//   const dirPath = getAbsolutePath(dir);
-
-//   await setCWD(dirPath);
-// }

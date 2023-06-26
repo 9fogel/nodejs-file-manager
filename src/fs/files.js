@@ -40,12 +40,12 @@ export const copyFile = async (args) => {
   const fileName = path.basename(filePath);
   const newPath = getAbsolutePath(path.join(newDirPath, fileName));
 
-  if (await doesExist(oldPath)) {
+  if (await doesExist(oldPath) && !await doesExist(newPath)) {
     const readableStream = fs.createReadStream(oldPath);
     const writableStream = fs.createWriteStream(newPath);
     await pipeline(readableStream, writableStream);
   } else {
-    throw new Error('No source file');
+    throw new Error('No source file or file with such name already exists');
   }
 }
 
