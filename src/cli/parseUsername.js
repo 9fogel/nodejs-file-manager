@@ -7,7 +7,7 @@ const parseUserName = () => {
     parsedArgs = parsedArgs
       .map((item) => {
         if (item.startsWith('--username')) {
-          return item.slice(11).split('_').join(' ').trim();
+          return item.split('=')[1] ? item.split('=')[1].split('_').join(' ').trim() : 'Anonymous';
         } else {
           return 'Anonymous';
         }
