@@ -9,9 +9,9 @@ let operation;
 let parameters;
 
 export const parseUserInput = async (value) => {
-  value = value.trim();
+  // value = value.trim();
 
-  if (value.includes(' ')) {
+  if (value.trim().includes(' ')) {
     const parsingList = value.split(' ');
 
     operation = parsingList[0];

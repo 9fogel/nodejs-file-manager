@@ -5,10 +5,12 @@ let dirPath;
 
 export const getAbsolutePath = (enteredPath) => {
   if (path.isAbsolute(enteredPath)) {
-    // console.log('path is abs', enteredPath);
     dirPath = path.resolve(enteredPath);
   } else {
-    dirPath = path.join(workingDir.current, enteredPath);
+    if (enteredPath.length == 2 && enteredPath.endsWith(':')) {
+      enteredPath += '/';
+    }
+    dirPath = path.resolve(workingDir.current, enteredPath);
   }
 
   return dirPath;
