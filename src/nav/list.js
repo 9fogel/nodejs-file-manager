@@ -16,7 +16,7 @@ export const showList = async () => {
 
   const sortedFileList = fileList.sort((a, b) => {
     if (a.type === b.type) {
-      return a.name < b.name ? -1 : 1;
+      return a.name.toLocaleLowerCase() < b.name.toLowerCase() ? -1 : 1;
     } else {
       return a.type < b.type ? -1 : 1;
     }
