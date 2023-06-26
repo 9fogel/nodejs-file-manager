@@ -22,8 +22,15 @@ export const goUp = async () => {
   await setCWD(dirAbovePath);
 }
 
-export const goToFolder = async (dir) => {
-  const dirPath = getAbsolutePath(dir);
+export const goToFolder = async (args) => {
+  const directory = args[0];
+  const dirPath = getAbsolutePath(directory);
 
   await setCWD(dirPath);
 }
+
+// export const goToFolder = async (dir) => {
+//   const dirPath = getAbsolutePath(dir);
+
+//   await setCWD(dirPath);
+// }

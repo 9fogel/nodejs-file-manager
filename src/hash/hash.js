@@ -6,7 +6,7 @@ import { showOutput as output } from '../utils/helpers.js';
 const { createHash } = await import('crypto');
 
 export const calculateHash = async (args) => {
-  const filePath = getAbsolutePath(args);
+  const filePath = getAbsolutePath(args[0]);
 
   const hash = createHash('sha256');
   const readableStream = fs.createReadStream(filePath);

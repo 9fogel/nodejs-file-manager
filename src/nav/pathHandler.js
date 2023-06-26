@@ -13,5 +13,6 @@ export const getAbsolutePath = (enteredPath) => {
     dirPath = path.resolve(workingDir.current, enteredPath);
   }
 
+  console.log('pathHandler', dirPath);
   return dirPath;
 }

@@ -2,7 +2,7 @@ import { access, stat } from 'fs/promises';
 import { Writable } from 'stream';
 
 
-const doesExist = async (path) => {
+export const doesExist = async (path) => {
   try {
     await access(path);
     return true;
@@ -20,11 +20,11 @@ export const isFile = async (absolutePath) => {
   }
 }
 
-const isDirectory = async (enteredPath) => {
-  const stats = await stat(absolutePath);
+// const isDirectory = async (enteredPath) => {
+//   const stats = await stat(absolutePath);
 
-  return stats.isDirectory();
-}
+//   return stats.isDirectory();
+// }
 
 export const showOutput = async () => {
   return new Writable({
